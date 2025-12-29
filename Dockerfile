@@ -1,7 +1,7 @@
 #airgeddon Dockerfile
 
 #Base image
-FROM parrotsec/security:latest
+FROM kalilinux/kali-rolling:latest
 
 #Credits & Data
 LABEL \
@@ -41,6 +41,7 @@ RUN \
 	aircrack-ng \
 	xterm \
 	iproute2 \
+	pciutils \
 	procps \
 	tmux
 
@@ -48,13 +49,14 @@ RUN \
 RUN \
 	apt -y install \
 	ethtool \
-	pciutils \
 	usbutils \
 	rfkill \
 	x11-utils \
 	wget \
 	ccze \
-	x11-xserver-utils
+	systemd \
+	x11-xserver-utils \
+	arping
 
 #Install update tools
 RUN \
@@ -87,7 +89,9 @@ RUN \
 	hcxtools \
 	hcxdumptool \
 	beef-xss \
-	tshark
+	tshark \
+	tcpdump \
+	hostapd-mana
 
 #Env var for display
 ENV DISPLAY=":0"

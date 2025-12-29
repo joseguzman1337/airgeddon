@@ -1,3 +1,148 @@
+### 11.60
+ - Added validation to reject multicast BSSID values when manually entered as targets
+ - Improved Enterprise fake AP compatibility
+ - Improved cleanup routine to remove temporary files on unexpected script termination
+ - Modified the lighttpd web server configuration during the Evil Twin captive portal attack to facilitate integration with certain plugins
+ - Added downgrade attack against WPA2/WPA3 Transitional (Mixed Mode) networks in the WPA3 menu
+ - Added support for Handshake and PMKID hashcat hash files in the personal offline decryption menu
+ - Validations added and improved code for all offline decryption attacks
+
+### 11.52
+ - Add WPA3 attacks menu as hookable function to facilitate WPA3 existing plugins integration
+ - Improved adapter 802.11be standard support detection
+ - Improved Evil Twin fake APs to add 802.11be if supported by the adapter
+ - Created an option to avoid using ESSID stripping during Evil Twin attacks
+ - Enhancements to enterprise certificate analysis and identities capture functionalities
+ - Small improvements in WEP All-in-One attack
+
+### 11.51
+ - ESSID stripping using invisible char to bypass Apple SSID grouping in Evil Twin attacks
+ - Improved captive portal's HTML and JS to make it work even in Apple CNA (Captive Network Assistant)
+ - Modified plugin system to allow multiple hooks from different plugins on functions marked as "hookable"
+ - Replaced legacy Github Markdown issue creation templates with structured YAML-based forms
+ - Compatibility extended to Puppy and CachyOS Linux
+ - Improved internal interface-to-MAC mapping logic for better reliability
+ - Refactor tool compatibility check to display in columns that adapt dynamically to terminal width for improved readability
+
+### 11.50
+ - Enterprise certificate analysis feature
+ - Fixed WEP besside-ng attack when hex key contains non-numeric chars
+ - Added DoS to enterprise identities capture process to improve reliability
+ - Added functions to simplify hooking menus and hints from plugins
+ - Added new variables to check support of 802.11n/802.11ac/802.11ax/802.11be standards
+ - Improved Evil Twin fake APs to add 802.11n/802.11ac/802.11ax if supported by the adapter
+ - Added support for detecting enterprise networks that report CMAC as their authentication method
+ - Fixed an issue in some DoS attacks with ESSIDs containing spaces
+ - Improved BSSID digit randomization to prevent fake AP from using the same MAC address as the original one
+ - Enhanced captive portal behaviour to avoid detection as suspicious network on Samsung devices
+
+### 11.41
+ - Added a function to simplify hooking language strings from plugins
+ - Enterprise identities capture feature
+ - Fixed broken dependency menu validation
+ - Added a flag to distinguish and validate personal and enterprise networks
+ - Implemented validations to ensure enterprise attacks are not executed on personal networks and vice versa
+ - Removed prefix and suffix hint symbols. Now scrambled arabic hint strings are fixed
+
+### 11.40
+ - Code refactor of the heredocs used for the Evil Twin, WEP and WPS attacks
+ - Standardize xterm parameters and adjust some colors to override the system's default settings
+ - Fixed bug parsing version number for newer hcxdumptool versions
+ - Added WEP besside-ng attack
+ - Added network decloaking feature using two methods
+ - Changed third available DoS attack (out of DoS attacks menu)
+ - Fix auto-update check from Docker
+
+### 11.31
+ - Fixed graphics system detection when launched on a headless system using remote X windows
+ - Fixed minor bug on paths when selecting a directory instead of a file while saving a trophy file
+ - Improvements on OS/distro detection
+ - Added feature to know during an Evil Twin captive portal attack, if the client accessed the portal
+ - Added feature to know during an Evil Twin attack, if the client is still present on the network
+ - Minor visual improvements on Evil Twin's captive portal
+ - Improvement on command line while capturing PMKID. Now, faster performance and less default timeout (Thank you to "alexl83")
+ - Fixed bug on view after a failed asleap attack from offline decryption menu
+ - Fixed issue on default choice when y/n question is asked while capturing a trap
+ - Fixed issue to prevent the trap function from being executed multiple times on consecutive Ctrl+C inputs
+
+### 11.30
+ - Added Multi-instance support to launch more than one airgeddon at a time
+ - Improvements on 5Ghz country code check and 5Ghz band capability detection on adapters
+ - Fixed bug to avoid set advanced captive portal on second time if is not desired after setting it previously
+ - Now channel is automatically updated on control window during "DoS pursuit mode" for all Evil Twin attacks
+ - Fixed error shown while checking if a handshake is wpa2 when wpa3 handshake is captured
+
+### 11.22
+ - Possibility to add manually ESSID name for selected hidden networks
+ - Improvement on process killing on Evil Twin attacks
+ - Add WPS version to network selection menu for WPS networks
+ - Reordered networks on network selection menus (standard and WPS), now networks with the strongest received signal will be placed last to avoid scrolling
+ - Fixed small bug on Evil Twin captive portal attack for passwords containing more than one space char
+ - Fixed Docker routing problem
+
+### 11.21
+ - Chinese language translation added (Thank you to "zcbxx")
+ - Fixed bug parsing cracked PIN on WPS reaver Pixie Dust attack for newer reaver versions
+ - Fixed error on PMKID capturing due hcxdumptool different params for newer versions using bpf filters
+ - Fixed error on interfaces and process killing on "DoS pursuit mode"
+
+### 11.20
+ - Improvements and fixes on "DoS pursuit mode"
+ - Fixed bug on Evil Twin captive portal attack when relative paths used
+ - Added Consistent Network Device Naming detection check upon interface selection
+ - Fixed bug on filtered WPA scans when pure WPA3 (SAE) present
+ - Fixed WPS attacks error message appearing on some Linux distributions
+ - Fixed bug in graphics system detection for non-systemd systems
+ - Added optional advanced captive portal including vendor logos
+
+### 11.11
+ - Custom enterprise certificates creation fix (now sha256) for modern hostapd-wpe versions
+ - Fixed Docker distro shown (now Kali based)
+ - Fixed PMKID hashcat hash parsing
+ - Improvements on graphics system and resolution detection
+ - Fixed 5Ghz Evil Twin attacks DoS problems
+ - Added 5Ghz country code check 
+ - Improvements on OS/distro detection
+
+### 11.10
+ - Fixed problem for latest BeEF
+ - Fixed broken dependency menu validation
+ - Added sponsorship mentions
+ - WPS attacks modified to avoid saved sessions messages
+ - Adapted conversion for hashcat modern versions
+
+### 11.02
+ - Fixed minor bug in minimum length setting while bruteforcing using hashcat
+ - Improvement hashcat use forcing it to use -m 22000 instead of old -m 2500 over handshakes cracking for hashcat modern versions
+ - Added WSL/WSL2 detection to force exit due to incompatibility
+ - Extended compatibility to use lspci 3.8 not accepting 0x
+ - Fixed error showing connected clients in Evil Twin captive portal attack
+
+### 11.01
+ - Fixed busy ports checks
+ - Added PIN to WPS trophy file
+ - Fixed Evil Twin route problems for modern mobile devices (Android, Kali Nethunter, etc.)
+ - Improvement in missing dependencies plugin to be able to check output when errors occur
+ - Adapted WPA/WPA2 attacks (handshake capture, PMKID and Evil Twin captive portal) to work with WPA2/WPA3 mixed networks
+ - Fix error launching sslstrip2 using old Bettercap 1.x
+
+### 11.0
+ - Improvements in plugins system
+ - GPU support for hashcat
+ - Keep compatibility for hashcat -m 2500 on new hashcat versions
+ - Improvement for busy ports checks on Evil Twin attacks, now show conflicting process
+ - Fixed error on captive portal trophy file path when only dir (no file) specified
+ - Added CI files to be used in Github actions for Docker automated building
+
+### 10.42
+ - Changed airmon compatibility check to fit same method used by airmon
+ - VIF support check added before launching Evil Twin attacks
+ - airgeddon version shown in title at main menu
+ - Fixed arabic scrambled strings and added missing arabic strings to missing dependencies plugin
+ - Fixed debug mode malfunction
+ - Added busy ports checks on Evil Twin attacks
+ - Dockerfile rollback to Arch (ArchStrike image as base) due to Parrot repos problems
+
 ### 10.41
  - Fixed error on PMKID hash validation
  - Created an option to avoid Network Manager force killing on Evil Twin attacks
@@ -62,7 +207,7 @@
  - Added plugins system
  - Added example plugin: Missing dependencies auto-installation for some distros (Kali, Parrot, BlackArch)
  - Improvements for Evil Twin on captive portal detection for newer devices
- - Missing 5GHz channels added
+ - Missing 5Ghz channels added
  - Github pull request template added and issue templates updated
  - Fixed error on hex2ascii conversion for some WEP passwords
 
@@ -82,7 +227,7 @@
  - Added tab autocompletion for every path input
 
 ### 9.21
- - Fixed non-closing windows on some DoS pursuit mode attacks
+ - Fixed non-closing windows on some "DoS pursuit mode" attacks
  - Added retrocompatibility for mdk3, added option in .airgeddonrc file to handle it
  - Fixed bug on WEP all-in-one attack (Fake Auth) for SSIDs containing spaces
  - Fixed repeated enterprise plain passwords captured on trophy files
@@ -100,7 +245,7 @@
  - Options .airgeddonrc file now also updated on automatic update keeping user's preferences
 
 ### 9.10
- - Mdk3 replaced by Mdk4
+ - mdk3 replaced by mdk4
  - Fixed some minor bugs on enterprise plain text captured password process
  - Fixed minor bug forcing interface mode change after smooth enterprise attack
  - Tested compatibility with Wifislax 64-2.x and Kali 2019.x
@@ -108,7 +253,7 @@
  - Routing rules adapted to work with nftables
 
 ### 9.01
- - Improvments on options environment var system
+ - Improvements on options environment var system
  - Minor fixes for ARM devices
  - Fixed iptables (nf_tables) problem
 
@@ -180,7 +325,7 @@
  - Code improvements, removed new shellcheck warnings
  - Fixed bug launching BeEF Evil Twin attack twice
 
-### 7.2
+### 7.20
  - Improved chipset detection
  - New language and options menu
  - Colorization, auto-update and startup language autodetection now can be enabled/disabled persistently from menu
@@ -194,7 +339,7 @@
  - WPA/WPA2 decrypted files using aircrack now have trophy file
  - Some outputs colorized using ccze
 
-### 7.1
+### 7.10
  - Added default choice for some yes/no question. Regexp improved
  - Tested compatibility with Backbox 4.7 and Parrot 3.6
  - Improved curl and wget methods. Now autodetect if http proxy is set and needed
@@ -211,7 +356,7 @@
  - Fixed bug while changing interface mode if the destination interface name is in use
  - Removed util-linux dependency for rev use
  - The existing iptables rules before the launch of airgeddon are now restored upon exiting if modified
- - Fixed bug while checking for NetworkManager's version on some linux distributions
+ - Fixed bug while checking for NetworkManager's version on some Linux distributions
  - Tested compatibility with Kali Linux 2017.1 and Parrot 3.5
  - Dockerfile updated
 
@@ -223,10 +368,10 @@
 ### 6.21
  - Improved chipset detection, lsusb added to internal tools
  - Improved internet checking. Now more methods, not only icmp
- - Fixed error executing airgeddon after auto-update on some distros
+ - Fixed error executing airgeddon after auto-update on some Linux distributions
  - Added LICENSE.md and README.md files to Kali package
 
-### 6.2
+### 6.20
  - Docker support added
  - Default save path system detecting if executed in Docker container
 
@@ -238,7 +383,7 @@
  - Optional MAC spoofing added for all Evil Twin attacks
  - Spoofed MAC addresses restored on exit
 
-### 6.1
+### 6.10
  - Network selection menus now colorized
  - Language strings now in a separated file for easy handling and translating
  - Validation and self-downloading system for new language strings file
@@ -282,7 +427,7 @@
  - Fixed bug for wash scanning on custom reaver 1.5.4 for Wifislax
  - Some code improvements
 
-### 5.1
+### 5.10
  - Integrated online PIN database for "known WPS PINs attack" (reaver and bully)
  - Zhao Chunsheng WPS PIN generation algorithm integrated (ComputePIN)
  - Stefan Viehböck WPS PIN generation algorithm integrated (EasyBox)
@@ -314,7 +459,7 @@
  - Fixed bug writing Handshake files on some paths
  - Added possibility to get back to Evil Twin main menu from the internet interface selection menu
 
-### 4.3
+### 4.30
  - Evil Twin attack added: captive portal
  - Some language strings changed
  - Now initial forwarding state is restored on exit
@@ -329,14 +474,14 @@
 ### 4.21
  - Greek language translation added (Thank you to "xtonousou")
 
-### 4.2
+### 4.20
  - Evil Twin attack added: with integrated sniffing using sslstrip
  - Evil Twin control window beautified and optimized for small windows
 
 ### 4.11
  - Russian language translation added (Thank you to "MiAl")
 
-### 4.1
+### 4.10
  - Evil Twin attack added: with integrated sniffing
  - Log parsing for Evil Twin attack with sniffing
 
@@ -349,7 +494,7 @@
 ### 4.02
  - New windows sizes calculation method for better viewing even in small resolutions. Dynamic system
  - Fixed bug restarting Network Manager on Arch Linux
- - Fixed bug restarting Network Manager using debug mode on some distros
+ - Fixed bug restarting Network Manager using debug mode on some Linux distributions
  - Suggestion added about possible packet names after failing a dependency check
 
 ### 4.01
@@ -359,7 +504,7 @@
  - Evil Twin attack added: Only AP to sniff with external sniffer
  - Created under construction message for non finished menu options
  - README.md beautified
- - Screen resolution correction feature added for some distros
+ - Screen resolution correction feature added for some Linux distributions
  - Some minor improvements and bugfixes
 
 ### 3.44
@@ -386,7 +531,7 @@
  - Added Open Document SpreadSheet for easy translation to be used by collaborating translators
  - System of prefixes and colors for hints and strings pending of translation [PoT]
 
-### 3.4
+### 3.40
  - Improved regexp to get new interface names after a change
  - Fixed bug managing paths containing blank spaces
  - New feature, drag and drop files on console window to entering file paths
@@ -397,7 +542,7 @@
 
 ### 3.34
  - Ascii art intro added on script startup (animated flying saucer!!)
- - Bug fixed after putting card in monitor mode and the card name changed on some distros
+ - Bug fixed after putting card in monitor mode and the card name changed on some Linux distributions
  - Compatibility extended to Gentoo, Fedora and Red Hat Linux
 
 ### 3.33
@@ -419,7 +564,7 @@
  - Improved missing optional tools detection method and integration with menus
  - Menu separator lines extracted to functions
 
-### 3.3
+### 3.30
  - SIGTSTP trap now handled
  - Minimum bash version check (v4)
  - Some language strings changed
@@ -445,7 +590,7 @@
  - Auto-update feature. Script checks for newer version
  - Some language strings changed
 
-### 3.2
+### 3.20
  - New offline password decrypt menu
  - Aircrack option to perform dictionary/bruteforce attacks against capture files
  - Removed autoclean after capturing a Handshake file
@@ -455,9 +600,9 @@
  - Optional autoclean captured Handshake file feature
  - Some language strings changed
 
-### 3.1
+### 3.10
  - Restoring initial state of cards on exit feature
- - "No check kill needed" feature added while putting card in monitor mode for some distros
+ - "No check kill needed" feature added while putting card in monitor mode for some Linux distributions
  - Fixed bug checking tools
 
 ### 3.02
@@ -488,7 +633,7 @@
  - French language translation added (Thank you to "kcdtv")
  - Only one network autoselect bug fixed
 
-### 2.3
+### 2.30
  - Compatibility extended to Parrot, Blackarch and Backbox Linux
  - Essential tools check improved
  - Distro compatibility check improved
@@ -512,15 +657,15 @@
  - Wifislax 64bits compatibility bug fixed
  - Removed version from README.md file
 
-### 2.2
+### 2.20
  - Changes to manage Wifislax airmon command in a better way
 
 ### 2.11
  - More color features
  - Compatibility check minor bug fixed
 
-### 2.1
- - Compatibility check at beginning to support more distros
+### 2.10
+ - Compatibility check at beginning to support more Linux distributions
  - Changelog file added to project
 
 ### 2.03
